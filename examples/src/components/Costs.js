@@ -5,7 +5,6 @@ import Card from "./Card";
 function Costs(props) {
 
      return (
-         // Использование компонента Card в качестве обертки для другого компонента для его стилизации
           <Card className='costs'>
               <CostItem date={props.costs[0].date} description={props.costs[0].description} amount={props.costs[0].amount}/>
               <CostItem date={props.costs[1].date} description={props.costs[1].description} amount={props.costs[1].amount}/>
