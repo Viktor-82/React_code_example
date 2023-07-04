@@ -1,7 +1,7 @@
 import './CostItem.css';
 import './CostDate';
 import CostDate from "./CostDate";
-import Card from "./Card";
+import Card from "../UI/Card";
 
 function CostItem(props) {
     return (<Card className='cost-item'>
