@@ -1,8 +1,6 @@
-// Строчка импорта реакта из реакта необходима только в старой форме записи
-import React from "react";
 import Costs from "./components/Costs/Costs";
 
-function App() {
+const App = () => {
 
   const costs = [
     {
@@ -23,17 +21,11 @@ function App() {
 
   ];
 
-  // Как на самом деле реакт пишет код "под капотом"
-  return React.createElement(
-      "div",
-      {},
-      React.createElement(Costs, {costs: costs})
+  return (
+      <div>
+        <Costs costs={costs}/>
+      </div>
   );
-  // return (
-  //     <div>
-  //       <Costs costs={costs}/>
-  //     </div>
-  // );
 }
 
 export default App;
