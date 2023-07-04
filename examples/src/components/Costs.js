@@ -1,15 +1,18 @@
 import CostItem from "./CostItem";
 import './Costs.css';
+import Card from "./Card";
 
 function Costs(props) {
 
      return (
-         <div className='costs'>
+         // Использование компонента Card в качестве обертки для другого компонента для его стилизации
+          <Card className='costs'>
               <CostItem date={props.costs[0].date} description={props.costs[0].description} amount={props.costs[0].amount}/>
               <CostItem date={props.costs[1].date} description={props.costs[1].description} amount={props.costs[1].amount}/>
               <CostItem date={props.costs[2].date} description={props.costs[2].description} amount={props.costs[2].amount}/>
-         </div>
+          </Card>
      )
+
 }
 
 export default Costs;
