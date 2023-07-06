@@ -16,7 +16,7 @@ const CostForm = () => {
 // Обновление данных при помощи передачи функции с предыдущим состоянием
         setUserInput((previousState) => {
             return {
-                ...previousState, previousState,
+                ...previousState,
                 name: event.target.value
             }
         })
@@ -26,7 +26,7 @@ const CostForm = () => {
     const amountChangeHandler = (event) => {
         setUserInput((previousState) => {
             return {
-                ...previousState, previousState,
+                ...previousState,
                 amount: event.target.value
             }
         })
@@ -36,7 +36,7 @@ const CostForm = () => {
     const dateChangeHandler = (event) => {
         setUserInput((previousState) => {
             return {
-                ...previousState, previousState,
+                ...previousState,
                 date: event.target.value
             }
         })
