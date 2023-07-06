@@ -13,26 +13,32 @@ const CostForm = () => {
     // Обработчики для каждого поля остаются с уникальными названиями
     // Для input "Название"
     const nameChangeHandler = (event) => {
-        setUserInput({
-// При помощи спред оператора разворачиваем объект и обновляем значение одного из элементов этого объекта
-            ...userInput,
-            name: event.target.value
+// Обновление данных при помощи передачи функции с предыдущим состоянием
+        setUserInput((previousState) => {
+            return {
+                ...previousState, previousState,
+                name: event.target.value
+            }
         })
     };
 
     // Для input "Сумма"
     const amountChangeHandler = (event) => {
-        setUserInput({
-            ...userInput,
-            amount: event.target.value
+        setUserInput((previousState) => {
+            return {
+                ...previousState, previousState,
+                amount: event.target.value
+            }
         })
     };
 
     // Для input "Дата"
     const dateChangeHandler = (event) => {
-        setUserInput({
-            ...userInput,
-            date: event.target.value
+        setUserInput((previousState) => {
+            return {
+                ...previousState, previousState,
+                date: event.target.value
+            }
         })
     };
 
