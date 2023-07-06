@@ -2,24 +2,38 @@ import React, { useState } from "react";
 import './CostForm.css';
 
 const CostForm = () => {
-    // Все состояния для всем input_ов
-    const [name, setName] = useState('');
-    const [amount, setAmount] = useState('');
-    const [date, setDate] = useState('');
 
+// Вариант с использованием одного состояния для всей формы. В одну переменную userInput прописываем объект с данными
+    const [userInput, setUserInput] = useState({
+        name: '',
+        amount: '',
+        date: ''
+    });
+
+    // Обработчики для каждого поля остаются с уникальными названиями
     // Для input "Название"
     const nameChangeHandler = (event) => {
-        setName(event.target.value);
+        setUserInput({
+// При помощи спред оператора разворачиваем объект и обновляем значение одного из элементов этого объекта
+            ...userInput,
+            name: event.target.value
+        })
     };
 
     // Для input "Сумма"
     const amountChangeHandler = (event) => {
-        setAmount(event.target.value);
+        setUserInput({
+            ...userInput,
+            amount: event.target.value
+        })
     };
 
     // Для input "Дата"
     const dateChangeHandler = (event) => {
-        setDate(event.target.value);
+        setUserInput({
+            ...userInput,
+            date: event.target.value
+        })
     };
 
     return <form>
@@ -42,6 +56,5 @@ const CostForm = () => {
         </div>
     </form>
 }
-
 
 export default CostForm;
