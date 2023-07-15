@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './CostForm.css';
 
-const CostForm = () => {
+// Передаем созданный в NewCost.js атрибут для CostForm через пропс.
+const CostForm = (props) => {
     const [inputName, setInputName] = useState('');
     const [inputAmount, setInputAmount] = useState('');
     const [inputDate, setInputDate] = useState('');
@@ -17,7 +18,6 @@ const CostForm = () => {
     const dateChangeHandler = (event) => {
         setInputDate(event.target.value);
     };
-{/* Предотвращаем поведение по умолчанию */}
     const submitHandler = (event) => {
         event.preventDefault();
 
@@ -26,8 +26,8 @@ const CostForm = () => {
             amount: inputAmount,
             date: new Date(inputDate)
         };
-        console.log(costData);
-{/* Для двустороннего связывания вызываем функцию обновлени значения переменной и передаем в нее пустую строку */}
+        // запускаем созданную в NewCost.js функцию через атрибут пропса. Будет вызвана функция saveCostDataHandler
+        props.onSaveCostData(costData);
         setInputName('');
         setInputAmount('');
         setInputDate('');
@@ -37,7 +37,6 @@ const CostForm = () => {
         <div className="new-cost__controls">
             <div className="new-cost__control">
                 <label>Название</label>
-{/* Для двустороннего связывания добавляем атрибут value и передаем в него переменную */}
                 <input type="text" value={inputName} onChange={nameChangeHandler}/>
             </div>
             <div className="new-cost__control">
