@@ -2,59 +2,51 @@ import React, { useState } from "react";
 import './CostForm.css';
 
 const CostForm = () => {
+    const [inputName, setInputName] = useState('');
+    const [inputAmount, setInputAmount] = useState('');
+    const [inputDate, setInputDate] = useState('');
 
-// Вариант с использованием одного состояния для всей формы. В одну переменную userInput прописываем объект с данными
-    const [userInput, setUserInput] = useState({
-        name: '',
-        amount: '',
-        date: ''
-    });
-
-    // Обработчики для каждого поля остаются с уникальными названиями
-    // Для input "Название"
     const nameChangeHandler = (event) => {
-// Обновление данных при помощи передачи функции с предыдущим состоянием
-        setUserInput((previousState) => {
-            return {
-                ...previousState,
-                name: event.target.value
-            }
-        })
+        setInputName(event.target.value);
     };
 
-    // Для input "Сумма"
     const amountChangeHandler = (event) => {
-        setUserInput((previousState) => {
-            return {
-                ...previousState,
-                amount: event.target.value
-            }
-        })
+        setInputAmount(event.target.value);
     };
 
-    // Для input "Дата"
     const dateChangeHandler = (event) => {
-        setUserInput((previousState) => {
-            return {
-                ...previousState,
-                date: event.target.value
-            }
-        })
+        setInputDate(event.target.value);
+    };
+{/* Предотвращаем поведение по умолчанию */}
+    const submitHandler = (event) => {
+        event.preventDefault();
+
+        const costData = {
+            name: inputName,
+            amount: inputAmount,
+            date: new Date(inputDate)
+        };
+        console.log(costData);
+{/* Для двустороннего связывания вызываем функцию обновлени значения переменной и передаем в нее пустую строку */}
+        setInputName('');
+        setInputAmount('');
+        setInputDate('');
     };
 
-    return <form>
+    return <form onSubmit={submitHandler}>
         <div className="new-cost__controls">
             <div className="new-cost__control">
                 <label>Название</label>
-                <input type="text" onChange={nameChangeHandler}/>
+{/* Для двустороннего связывания добавляем атрибут value и передаем в него переменную */}
+                <input type="text" value={inputName} onChange={nameChangeHandler}/>
             </div>
             <div className="new-cost__control">
                 <label>Сумма</label>
-                <input type="number" onChange={amountChangeHandler} min="0.01" step="0.01"/>
+                <input type="number" value={inputAmount} onChange={amountChangeHandler} min="0.01" step="0.01"/>
             </div>
             <div className="new-cost__control">
                 <label>Дата</label>
-                <input type="date" onChange={dateChangeHandler} min="2019-01-01" max="2023-12-31"/>
+                <input type="date" value={inputDate} onChange={dateChangeHandler} min="2019-01-01" max="2023-12-31"/>
             </div>
             <div className="new-cost__actions">
                 <button type="submit">Добавить расход</button>
@@ -62,5 +54,6 @@ const CostForm = () => {
         </div>
     </form>
 }
+
 
 export default CostForm;
