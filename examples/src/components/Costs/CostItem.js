@@ -1,21 +1,16 @@
+import React, { useState } from "react";
 import './CostItem.css';
 import './CostDate';
 import CostDate from "./CostDate";
 import Card from "../UI/Card";
-// Для того чтобы React после отрисовки страницы отражал изменения (парсил элемент заново)
-// необходимо сделать именованный импорт функции useState из библиотеки React в элемент где стоят обработчики событий
-import React, { useState } from "react";
+
 
 const CostItem = (props) => {
-    // Чтобы useState(); сработал нужно его вызвать внутри компонента попутно вытащить из него значения деструктуризацией
+
     const [description, setDescription] = useState(props.description);
 
-
     const changeDescriptionHandler = () => {
-        // Здесь в функцию передаем значение которое нужно установить в переменной
-        // идет присваивание переменной нового значения + вызов компонента
-        // description='New cost'; & CostItem(props);
-        setDescription('New cost');
+        setDescription('NewCost')
     }
 
     return (<Card className='cost-item'>
@@ -28,5 +23,6 @@ const CostItem = (props) => {
             </Card>
     );
 }
+
 
 export default CostItem;

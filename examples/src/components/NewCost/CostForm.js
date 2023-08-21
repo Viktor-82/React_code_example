@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import './CostForm.css';
 
-// Передаем созданный в NewCost.js атрибут для CostForm через пропс.
 const CostForm = (props) => {
     const [inputName, setInputName] = useState('');
     const [inputAmount, setInputAmount] = useState('');
@@ -22,11 +21,10 @@ const CostForm = (props) => {
         event.preventDefault();
 
         const costData = {
-            name: inputName,
+            description: inputName,
             amount: inputAmount,
             date: new Date(inputDate)
         };
-        // запускаем созданную в NewCost.js функцию через атрибут пропса. Будет вызвана функция saveCostDataHandler
         props.onSaveCostData(costData);
         setInputName('');
         setInputAmount('');
