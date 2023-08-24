@@ -20,22 +20,23 @@ const Costs = (props) => {
     // В реакт можно сохранять JSX в переменную
     let constContent = <p>В этом году расходов нет</p>;
 
+    if (filteredCosts.length > 0) {
+        constContent =
+            filteredCosts.map(cost => (
+            <CostItem
+                key={cost.id} // без установки этого значения отображение данных некорректное
+                date={cost.date}
+                description={cost.description}
+                amount={cost.amount}
+            />
+        ))
+    }
 
      return (
          <div>
              <Card className='costs'>
              <CostsFilter year={selectYear} onChangeYear={changeYearHandler} />
-             {/* Для отображения сообщения если массив данных пуст */}
-             {filteredCosts.length === 0 && constContent}
-             {filteredCosts.length > 0 &&
-                 filteredCosts.map(cost => (
-                         <CostItem
-                             key={cost.id} // без установки этого значения отображение данных некорректное
-                             date={cost.date}
-                             description={cost.description}
-                             amount={cost.amount}
-                         />
-                     ))}
+             {constContent}
              </Card>
          </div>
 
