@@ -13,22 +13,29 @@ const Costs = (props) => {
         console.log(selectYear, 'State from Costs.js');
     };
 
+     // Метод фильтрует отображение компонентов по году
+    const filteredCosts = props.costs.filter(cost => {
+        return cost.date.getFullYear().toString() === selectYear;
+    })
+    // В реакт можно сохранять JSX в переменную
+    let constContent = <p>В этом году расходов нет</p>;
+
+
      return (
          <div>
              <Card className='costs'>
              <CostsFilter year={selectYear} onChangeYear={changeYearHandler} />
-             {/* Пишем код для динамического отображения данных. Внизу закоментирован статический код как пример */}
-             {props.costs.map(cost => (
-                 <CostItem
-                 key={cost.id} // без установки этого значения отображение данных некорректное
-                 date={cost.date}
-                 description={cost.description}
-                 amount={cost.amount}
-             />
+             {/* Для отображения сообщения если массив данных пуст */}
+             {filteredCosts.length === 0 && constContent}
+             {filteredCosts.length > 0 &&
+                 filteredCosts.map(cost => (
+                         <CostItem
+                             key={cost.id} // без установки этого значения отображение данных некорректное
+                             date={cost.date}
+                             description={cost.description}
+                             amount={cost.amount}
+                         />
                      ))}
-                 {/*<CostItem date={props.costs[0].date} description={props.costs[0].description} amount={props.costs[0].amount}/>*/}
-                 {/*<CostItem date={props.costs[1].date} description={props.costs[1].description} amount={props.costs[1].amount}/>*/}
-                 {/*<CostItem date={props.costs[2].date} description={props.costs[2].description} amount={props.costs[2].amount}/>*/}
              </Card>
          </div>
 

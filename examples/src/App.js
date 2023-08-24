@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import NewCost from "./components/NewCost/NewCost";
 import Costs from "./components/Costs/Costs";
+import CostsFilter from "./components/Costs/CostsFilter";
 
 const INITIAL_COSTS = [
   {
@@ -35,6 +36,15 @@ const App = () => {
   };
 
   console.log(costs);
+
+  /* Для решения задачи вывода данных по фильтру год создам метод который будет получать из компонента
+  * CostFilter значение выбранного года и делать выборку из массива методом .filter() образовывая новый массив
+  * с даными который я и буду выводить в копоненте Costs */
+
+  // const getYearFromFilter = (year) => {
+  //   const filterCost = costs.filter(year)
+  // };
+  // console.log(getYearFromFilter)
 
   return (
       <div>
