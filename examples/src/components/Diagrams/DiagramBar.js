@@ -12,7 +12,11 @@ const DiagramBar = (props) => {
     return (
         <div className="diagram-bar">
             <div className="diagram-bar__inner">
-                <div className="diagram-bar__fill">
+                <div className="diagram-bar__fill"
+                style={{
+                    height: barFillHeight
+                }}
+                >
                 </div>
             </div>
             <div className="diagram-bar__label">
